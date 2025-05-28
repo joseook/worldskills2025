@@ -1,0 +1,89 @@
+Belle Croissant API - Endpoints Documentation
+Base URL: https://localhost:7284
+
+Authentication:
+- Todos os endpoints requerem autenticação básica.
+- Username: staff
+- Password: BCLyon2024
+
+Customers Endpoints:
+1. GET /api/Customers
+   - Lista todos os clientes
+   - Sem paramentros obrigatorios
+
+2. GET /api/Customers/{id}
+   - Lista o cliente pelo id
+   - Parametro: id (inteiro)
+
+3. POST /api/Customers
+   - Cria um novo cliente
+   - Requer dados do cliente no corpo da requisição, dados em pascal case, exemplo: {
+	   "FirstName": "John",
+	   "LastName": "Doe",
+	   "Email": "
+	}
+
+4. PUT /api/Customers/{id}
+   - Atualizar cliente pelo id
+   - Parametro: id (inteiro)
+   - Requer dados atualizados do cliente no corpo da requisição, dados em pascal case, exemplo: {
+	   "FirstName": "John",
+	   "LastName": "Doe",
+	   "Email": "
+	}
+
+Products Endpoints:
+1. GET /api/Products
+   - Lista todos os produtos
+   - Não precisa de parâmetros
+
+2. GET /api/Products/{id}
+   - Lista o produto pelo id
+   - Parametro: id (inteiro)
+
+3. POST /api/Products
+   - Criar um novo produto
+   - Requer dados do produto no corpo da requisição, dados em pascal case, exemplo: {
+	   "ProductName": "Croissant",
+	   "Price": 2.50,
+	   "Category": "Delicious butter croissant"
+	}
+
+4. PUT /api/Products/{id}
+   - Atualizar produto pelo id
+   - Parameter: id (inteiro)
+   - Requer dados atualizados do produto no corpo da requisição, dados em pascal case, exemplo: {
+	   "ProductName": "Croissant",
+	   "Price": 2.50,
+	   "Category": "Delicious butter croissant"
+	}
+
+5. DELETE /api/Products/{id}
+   - Deletar produto pelo id
+   - Parametro: id (inteiro)
+
+Orders Endpoints:
+1. GET /api/Orders
+   - Lista todos os pedidos
+   - Sem parametros obrigatórios
+
+2. GET /api/Orders/{id}
+   - Lista o pedido pelo id
+   - Parametro: id (inteiro)
+
+3. POST /api/Orders
+   - Criar um novo pedido
+   - Requer dados do pedido no corpo da requisição, dados em pascal case, exemplo: {
+	   "CustomerId": 1,
+	   "ProductId": 1,
+	   "Quantity": 2
+	}
+
+4. PUT /api/Orders/{id}/complete
+   - Completar um pedido
+   - Parametro: id (inteiro)
+
+5. DELETE /api/Orders/{id}/cancel
+   - Cancelar/deletar um pedido
+   - Parameter: id (inteiro)
+
