@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AppBelleCroissant")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+82cc33f6901d352e8a3b7f88f210899f3cb70f8e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+bdfb17baf4aaf15b94baeef10feaddb29c3f3b41")]
 [assembly: System.Reflection.AssemblyProductAttribute("AppBelleCroissant")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AppBelleCroissant")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

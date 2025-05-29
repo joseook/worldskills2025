@@ -1,0 +1,4 @@
+C:\Users\josep\Workspace\WorkshopSP\AppBelleCroissant\bin\Release\net8.0-android\publish\com.companyname.appbellecroissant-Signed.aab
+C:\Users\josep\Workspace\WorkshopSP\AppBelleCroissant\bin\Release\net8.0-android\publish\com.companyname.appbellecroissant.aab
+C:\Users\josep\Workspace\WorkshopSP\AppBelleCroissant\bin\Release\net8.0-android\publish\com.companyname.appbellecroissant-Signed.apk
+C:\Users\josep\Workspace\WorkshopSP\AppBelleCroissant\bin\Release\net8.0-android\publish\_Microsoft.Android.Resource.Designer.dll

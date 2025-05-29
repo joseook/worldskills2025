@@ -66,11 +66,11 @@ build_metadata.AdditionalFiles.ManifestResourceName = AppBelleCroissant.Pages.Re
 build_metadata.AdditionalFiles.TargetPath = Pages\RegisterPage.xaml
 build_metadata.AdditionalFiles.RelativePath = Pages\RegisterPage.xaml
 
-[C:/Users/josep/Workspace/WorkshopSP/AppBelleCroissant/PostsPage.xaml]
+[C:/Users/josep/Workspace/WorkshopSP/AppBelleCroissant/Pages/SplashPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
-build_metadata.AdditionalFiles.ManifestResourceName = AppBelleCroissant.PostsPage.xaml
-build_metadata.AdditionalFiles.TargetPath = PostsPage.xaml
-build_metadata.AdditionalFiles.RelativePath = PostsPage.xaml
+build_metadata.AdditionalFiles.ManifestResourceName = AppBelleCroissant.Pages.SplashPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\SplashPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\SplashPage.xaml
 
 [C:/Users/josep/Workspace/WorkshopSP/AppBelleCroissant/Resources/Styles/Colors.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
