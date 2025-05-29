@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppBelleCroissant.Pages.ProductDetailsPage"
+             xmlns:viewmodel="clr-namespace:AppBelleCroissant.ViewModels"
+             x:DataType="viewmodel:ProductDetailsViewModel"
+             Title="{Binding Title}"
+             BackgroundColor="#f8f9fa">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Command="{Binding ToggleFavoriteCommand}"
+                   IconImageSource="{Binding Product.IsFavorite, Converter={StaticResource BoolToFavoriteIconConverter}}" />
+    </ContentPage.ToolbarItems>
+
+    <Grid RowDefinitions="Auto,*" Padding="20">
+        <!-- Detalhes do produto -->
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Spacing="20">
+                <!-- Imagem do produto -->
+                <Frame HorizontalOptions="Center" 
+                       CornerRadius="10" 
+                       Padding="0" 
+                       HasShadow="False" 
+                       BorderColor="#ced4da"
+                       HeightRequest="200" 
+                       WidthRequest="200">
+                    <Image Source="croissant.png" 
+                           Aspect="AspectFill"/>
+                </Frame>
+
+                <!-- Nome do produto -->
+                <Label Text="{Binding Product.ProductName}" 
+                       FontSize="28" 
+                       FontAttributes="Bold" 
+                       HorizontalOptions="Center"/>
+
+                <!-- Preço -->
+                <Label Text="{Binding Product.Price, StringFormat='Preço: {0:C}'}" 
+                       FontSize="24" 
+                       HorizontalOptions="Center"
+                       TextColor="#6f42c1"/>
+
+                <!-- Categoria -->
+                <Frame BorderColor="#ced4da" 
+                       BackgroundColor="White" 
+                       CornerRadius="10" 
+                       Padding="15" 
+                       HasShadow="False">
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="Categoria:" 
+                               FontAttributes="Bold" 
+                               FontSize="16"/>
+                        <Label Text="{Binding Product.Category}" 
+                               FontSize="16"/>
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- Ingredientes -->
+                <Frame BorderColor="#ced4da" 
+                       BackgroundColor="White" 
+                       CornerRadius="10" 
+                       Padding="15" 
+                       HasShadow="False">
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="Ingredientes:" 
+                               FontAttributes="Bold" 
+                               FontSize="16"/>
+                        <Label Text="{Binding Product.Ingredients}" 
+                               FontSize="16"/>
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- Informações adicionais -->
+                <Frame BorderColor="#ced4da" 
+                       BackgroundColor="White" 
+                       CornerRadius="10" 
+                       Padding="15" 
+                       HasShadow="False">
+                    <Grid RowDefinitions="Auto,Auto,Auto" 
+                          ColumnDefinitions="Auto,*" 
+                          RowSpacing="10" 
+                          ColumnSpacing="20">
+                        
+                        <!-- Produto sazonal -->
+                        <Label Grid.Row="0" 
+                               Grid.Column="0" 
+                               Text="Produto Sazonal:" 
+                               FontAttributes="Bold" 
+                               FontSize="16"/>
+                        <Label Grid.Row="0" 
+                               Grid.Column="1" 
+                               Text="{Binding Product.Seasonal, Converter={StaticResource BoolToYesNoConverter}}" 
+                               FontSize="16"/>
+                        
+                        <!-- Produto ativo -->
+                        <Label Grid.Row="1" 
+                               Grid.Column="0" 
+                               Text="Disponível:" 
+                               FontAttributes="Bold" 
+                               FontSize="16"/>
+                        <Label Grid.Row="1" 
+                               Grid.Column="1" 
+                               Text="{Binding Product.Active, Converter={StaticResource BoolToYesNoConverter}}" 
+                               FontSize="16"/>
+                        
+                        <!-- Data de introdução -->
+                        <Label Grid.Row="2" 
+                               Grid.Column="0" 
+                               Text="Desde:" 
+                               FontAttributes="Bold" 
+                               FontSize="16"/>
+                        <Label Grid.Row="2" 
+                               Grid.Column="1" 
+                               Text="{Binding Product.IntroducedDate, StringFormat='{0:dd/MM/yyyy}'}" 
+                               FontSize="16"/>
+                    </Grid>
+                </Frame>
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- Indicador de carregamento -->
+        <ActivityIndicator Grid.RowSpan="2"
+                          IsRunning="{Binding IsBusy}"
+                          IsVisible="{Binding IsBusy}"
+                          HorizontalOptions="Center"
+                          VerticalOptions="Center"
+                          Color="#6f42c1"/>
+    </Grid>
+</ContentPage>

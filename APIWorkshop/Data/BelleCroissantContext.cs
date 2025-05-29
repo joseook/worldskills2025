@@ -1,4 +1,4 @@
-﻿using APIWorkshop.Model;
+using APIWorkshop.Model;
 using Microsoft.EntityFrameworkCore;
 
 namespace APIWorkshop.Data {
@@ -7,6 +7,7 @@ namespace APIWorkshop.Data {
         public DbSet<Product> Products {get; set; }
         public DbSet<Customer> Customers {get; set; }
         public DbSet<Order> Orders {get; set; }
+        public DbSet<User> Users {get; set; }
         
         public BelleCroissantContext(DbContextOptions<BelleCroissantContext> options) : base(options) {}
 
@@ -29,6 +30,14 @@ namespace APIWorkshop.Data {
                 .WithMany()
                 .HasForeignKey(k => k.ProductId);
 
+            // Configurando User para permitir que ResetToken seja nullable
+            modelBuilder.Entity<User>()
+                .Property(u => u.ResetToken)
+                .IsRequired(false);
+
+            modelBuilder.Entity<User>()
+                .Property(u => u.ResetTokenExpiry)
+                .IsRequired(false);
         }
     }
 }

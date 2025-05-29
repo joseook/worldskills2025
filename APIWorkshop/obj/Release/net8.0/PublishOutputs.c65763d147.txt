@@ -1,5 +1,4 @@
 C:\Users\josep\Downloads\user01\APIWorkshop.exe
-C:\Users\josep\Downloads\user01\appsettings.Development.json
 C:\Users\josep\Downloads\user01\appsettings.json
 C:\Users\josep\Downloads\user01\APIWorkshop.dll
 C:\Users\josep\Downloads\user01\APIWorkshop.runtimeconfig.json

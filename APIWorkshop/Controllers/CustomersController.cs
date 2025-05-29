@@ -7,14 +7,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace APIWorkshop.Controllers {
-    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class CustomersController : ControllerBase {
-
-
         private readonly BelleCroissantContext _context;
-
 
         public CustomersController(BelleCroissantContext belleCroissantContext) {
             _context = belleCroissantContext;

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\josep\\Workspace\\Workshop\\BelleCroissantDesktop\\BelleCroissantDesktop.csproj": {}
+    "C:\\Users\\josep\\Workspace\\WorkshopSP\\BelleCroissantDesktop\\BelleCroissantDesktop.csproj": {}
   },
   "projects": {
-    "C:\\Users\\josep\\Workspace\\Workshop\\BelleCroissantDesktop\\BelleCroissantDesktop.csproj": {
+    "C:\\Users\\josep\\Workspace\\WorkshopSP\\BelleCroissantDesktop\\BelleCroissantDesktop.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\josep\\Workspace\\Workshop\\BelleCroissantDesktop\\BelleCroissantDesktop.csproj",
+        "projectUniqueName": "C:\\Users\\josep\\Workspace\\WorkshopSP\\BelleCroissantDesktop\\BelleCroissantDesktop.csproj",
         "projectName": "BelleCroissantDesktop",
-        "projectPath": "C:\\Users\\josep\\Workspace\\Workshop\\BelleCroissantDesktop\\BelleCroissantDesktop.csproj",
+        "projectPath": "C:\\Users\\josep\\Workspace\\WorkshopSP\\BelleCroissantDesktop\\BelleCroissantDesktop.csproj",
         "packagesPath": "C:\\Users\\josep\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\josep\\Workspace\\Workshop\\BelleCroissantDesktop\\obj\\",
+        "outputPath": "C:\\Users\\josep\\Workspace\\WorkshopSP\\BelleCroissantDesktop\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

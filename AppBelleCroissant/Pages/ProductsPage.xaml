@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppBelleCroissant.Pages.ProductsPage"
+             xmlns:viewmodel="clr-namespace:AppBelleCroissant.ViewModels"
+             xmlns:model="clr-namespace:AppBelleCroissant.Models"
+             x:DataType="viewmodel:ProductsViewModel"
+             Title="{Binding Title}"
+             BackgroundColor="#f8f9fa">
+
+    <Grid RowDefinitions="Auto,*" Padding="10">
+        <!-- Cabeçalho com pesquisa e filtros -->
+        <Grid Grid.Row="0" RowDefinitions="Auto,Auto" ColumnDefinitions="*,Auto" Margin="0,10,0,0">
+            <!-- Barra de pesquisa -->
+            <Frame Grid.Row="0" Grid.Column="0" 
+                   BorderColor="#ced4da" 
+                   BackgroundColor="White" 
+                   CornerRadius="5" 
+                   Padding="5,0" 
+                   HasShadow="False">
+                <Grid ColumnDefinitions="Auto,*">
+                    <Image Grid.Column="0"
+                           Source="search.png"
+                           HeightRequest="20"
+                           WidthRequest="20"
+                           Margin="5,0"
+                           VerticalOptions="Center"/>
+                    <Entry Grid.Column="1"
+                           Placeholder="Pesquisar produtos"
+                           Text="{Binding SearchText}"
+                           ClearButtonVisibility="WhileEditing"
+                           VerticalOptions="Center"/>
+                </Grid>
+            </Frame>
+            
+            <!-- Seletor de categorias -->
+            <Button Grid.Row="0" Grid.Column="1"
+                    Text="Categorias"
+                    Margin="5,0,0,0"
+                    BackgroundColor="#6f42c1"
+                    TextColor="White"
+                    Clicked="OnCategoriesButtonClicked"/>
+            
+            <!-- Chips de categorias selecionadas -->
+            <FlexLayout Grid.Row="1" Grid.ColumnSpan="2"
+                        BindableLayout.ItemsSource="{Binding SelectedCategories}"
+                        Wrap="Wrap"
+                        JustifyContent="Start"
+                        AlignItems="Center"
+                        AlignContent="Start"
+                        Margin="0,5">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate x:DataType="x:String">
+                        <Frame Padding="8,3" Margin="2" BorderColor="#6f42c1" BackgroundColor="#f3ebff" CornerRadius="15">
+                            <StackLayout Orientation="Horizontal" Spacing="5">
+                                <Label Text="{Binding .}" TextColor="#6f42c1" VerticalOptions="Center" FontSize="12"/>
+                                <Image Source="close.png" HeightRequest="12" WidthRequest="12">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer CommandParameter="{Binding .}" Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ProductsViewModel}}, Path=FilterByCategoryCommand}"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                            </StackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </FlexLayout>
+            
+            <!-- Botão de favoritos -->
+            <CheckBox Grid.Row="1" Grid.Column="1"
+                     IsChecked="{Binding ShowOnlyFavoritesFlag}"
+                     Color="#6f42c1"/>
+            <Label Grid.Row="1" Grid.Column="1"
+                   Text="Favoritos"
+                   Margin="50,0,0,0"
+                   VerticalOptions="Center"/>
+        </Grid>
+        
+        <!-- Lista de produtos -->
+        <RefreshView Grid.Row="1"
+                    IsRefreshing="{Binding IsRefreshing}"
+                    Command="{Binding RefreshCommand}">
+            <CollectionView ItemsSource="{Binding Products}"
+                            SelectionMode="None"
+                            Margin="0,10,0,0">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:Product">
+                        <Frame Margin="0,0,0,10"
+                               BorderColor="#ced4da"
+                               BackgroundColor="White"
+                               CornerRadius="10"
+                               HasShadow="False"
+                               Padding="15">
+                            <Grid ColumnDefinitions="Auto,*,Auto" RowDefinitions="Auto,Auto,Auto">
+                                <!-- Imagem do produto (placeholder) -->
+                                <Image Grid.RowSpan="3"
+                                       Source="croissant.png"
+                                       HeightRequest="60"
+                                       WidthRequest="60"
+                                       Margin="0,0,15,0"/>
+                                
+                                <!-- Nome do produto -->
+                                <Label Grid.Column="1"
+                                       Grid.Row="0"
+                                       Text="{Binding ProductName}"
+                                       FontAttributes="Bold"
+                                       FontSize="18"/>
+                                
+                                <!-- Preço -->
+                                <Label Grid.Column="1"
+                                       Grid.Row="1"
+                                       Text="{Binding Price, StringFormat='Preço: {0:C}'}"
+                                       FontSize="14"/>
+
+                                <!-- Categoria -->
+                                <Label Grid.Column="1"
+                                       Grid.Row="2"
+                                       Text="{Binding Category, StringFormat='Categoria: {0}'}"
+                                       FontSize="12"
+                                       TextColor="#6c757d"/>
+                                
+                                <!-- Botão de favorito -->
+                                <ImageButton Grid.Column="2"
+                                            Grid.Row="0"
+                                            Source="{Binding IsFavorite, Converter={StaticResource BoolToFavoriteIconConverter}}"
+                                            HeightRequest="24"
+                                            WidthRequest="24"
+                                            BackgroundColor="Transparent"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ProductsViewModel}}, Path=ToggleFavoriteCommand}"
+                                            CommandParameter="{Binding .}"/>
+                                
+                                <!-- Botão de detalhes -->
+                                <Button Grid.Column="2"
+                                        Grid.Row="1"
+                                        Grid.RowSpan="2"
+                                        Text="Detalhes"
+                                        BackgroundColor="#6f42c1"
+                                        TextColor="White"
+                                        CornerRadius="5"
+                                        HeightRequest="30"
+                                        FontSize="12"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ProductsViewModel}}, Path=ViewProductDetailsCommand}"
+                                        CommandParameter="{Binding .}"/>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                <CollectionView.EmptyView>
+                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                        <Image Source="empty_box.png" HeightRequest="100" WidthRequest="100" Opacity="0.5"/>
+                        <Label Text="Nenhum produto encontrado" 
+                               HorizontalOptions="Center" 
+                               TextColor="#6c757d" 
+                               Margin="0,10,0,0"/>
+                    </StackLayout>
+                </CollectionView.EmptyView>
+            </CollectionView>
+        </RefreshView>
+
+        <!-- Indicador de carregamento -->
+        <ActivityIndicator Grid.RowSpan="2"
+                          IsRunning="{Binding IsBusy}"
+                          IsVisible="{Binding IsBusy}"
+                          HorizontalOptions="Center"
+                          VerticalOptions="Center"
+                          Color="#6f42c1"/>
+    </Grid>
+</ContentPage>

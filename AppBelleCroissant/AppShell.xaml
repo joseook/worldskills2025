@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="AppBelleCroissant.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:AppBelleCroissant"
+    xmlns:pages="clr-namespace:AppBelleCroissant.Pages"
+    Shell.FlyoutBehavior="Flyout"
+    FlyoutBackgroundColor="White"
+    Title="Belle Croissant">
+
+    <Shell.FlyoutHeader>
+        <Grid BackgroundColor="#6f42c1" HeightRequest="120">
+            <Label Text="Belle Croissant" 
+                   TextColor="White"
+                   FontSize="26"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center" />
+        </Grid>
+    </Shell.FlyoutHeader>
+
+    <!-- Páginas de Autenticação não exibidas no menu do Flyout -->
+    <ShellContent
+        Shell.FlyoutItemIsVisible="False"
+        Title="Login"
+        ContentTemplate="{DataTemplate pages:LoginPage}"
+        Route="LoginPage" />
+
+    <ShellContent
+        Shell.FlyoutItemIsVisible="False"
+        Title="Criar Conta"
+        ContentTemplate="{DataTemplate pages:RegisterPage}"
+        Route="RegisterPage" />
+    
+    <ShellContent
+        Shell.FlyoutItemIsVisible="False"
+        Title="Esqueci a Senha"
+        ContentTemplate="{DataTemplate pages:ForgotPasswordPage}"
+        Route="ForgotPasswordPage" />
+
+    <!-- Páginas principais exibidas no menu do Flyout -->
+    <FlyoutItem Title="Home" Icon="home.png">
+        <ShellContent
+            Title="Home"
+            ContentTemplate="{DataTemplate local:MainPage}"
+            Route="MainPage" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Produtos" Icon="shop.png">
+        <ShellContent
+            Title="Produtos"
+            ContentTemplate="{DataTemplate pages:ProductsPage}"
+            Route="ProductsPage" />
+    </FlyoutItem>
+
+    <Shell.FlyoutFooter>
+        <StackLayout Padding="20">
+            <Button Text="Sair" 
+                    Command="{Binding LogoutCommand}" 
+                    BackgroundColor="#6f42c1" 
+                    TextColor="White" 
+                    CornerRadius="5" 
+                    HeightRequest="40" />
+        </StackLayout>
+    </Shell.FlyoutFooter>
+
+</Shell>
